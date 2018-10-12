@@ -45,14 +45,16 @@ public class ControlPanelFragment extends Fragment implements DatePickerDialog.O
         digitalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.updatePageAdapter(new DigitalClockFragment(), "Digital Clock");
+                MainActivity.getSectionsPagerAdapter().addFragment(new DigitalClockFragment(), "Digital Clock");
+                MainActivity.updatePageAdapter();
             }
         });
 
         analogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.updatePageAdapter(new AnalogClockFragment(), "Analog Clock");
+                MainActivity.getSectionsPagerAdapter().addFragment(new AnalogClockFragment(), "Analog Clock");
+                MainActivity.updatePageAdapter();
             }
         });
 

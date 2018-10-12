@@ -44,14 +44,16 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
     }
 
-    public static void updatePageAdapter(Fragment newFragment, String title) {
-        mSectionsPagerAdapter.addFragment(newFragment, title);
-
+    public static void updatePageAdapter() {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.setupWithViewPager(mViewPager);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+    }
+
+    public static SectionsPagerAdapter getSectionsPagerAdapter() {
+        return mSectionsPagerAdapter;
     }
 
 }
