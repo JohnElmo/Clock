@@ -81,10 +81,8 @@ public class ControlPanelFragment extends Fragment implements DatePickerDialog.O
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        MainActivity.getModel().setCurrentYear(year);
-        MainActivity.getModel().setCurrentMonth(month);
-        MainActivity.getModel().setCurrentDay(dayOfMonth);
-        MainActivity.getModel().setChanged(true);
+        undoRedoManager.execute(new ChangeDateCommand(MainActivity.getModel().getCurrentYear(), MainActivity.getModel().getCurrentMonth(),
+                MainActivity.getModel().getCurrentDay(), year, month, dayOfMonth));
     }
 
     @Override
