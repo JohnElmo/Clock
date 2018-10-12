@@ -15,19 +15,12 @@ public class Model {
         Thread t1 = new Thread() {
             @Override
             public void run() {
-                while (!changed) {
-                    Calendar cal = Calendar.getInstance();
-                    getCalendarInfo(cal);
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace();
-                    }
-                }
                 while(!isInterrupted()) {
                     Calendar cal = Calendar.getInstance();
-                    setCalendarInfo(cal);
-                    cal.add(Calendar.SECOND, 1);
+                    if (changed) {
+                        setCalendarInfo(cal);
+                        cal.add(Calendar.SECOND, 1);
+                    }
                     getCalendarInfo(cal);
                     try {
                         Thread.sleep(1000);
