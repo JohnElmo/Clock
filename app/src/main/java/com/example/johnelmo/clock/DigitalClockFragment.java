@@ -9,21 +9,20 @@ import android.widget.TextView;
 
 public class DigitalClockFragment extends Fragment {
 
-    TextView timeView, dateView;
-    String format = "%02d";
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.digital_clock_fragment, container, false);
 
-        timeView = rootView.findViewById(R.id.digitalClockTextView);
-        dateView = rootView.findViewById(R.id.dateTextView);
+        final TextView timeView = rootView.findViewById(R.id.digitalClockTextView);
+        final TextView dateView = rootView.findViewById(R.id.dateTextView);
+        final String format = "%02d";
 
         Thread t1 = new Thread() {
             @Override
             public void run() {
                 while(!interrupted()) {
-                    displayViews();
+                    displayTimeView(timeView, format);
+                    displayDateView(dateView, format);
 
                     try {
                         Thread.sleep(1000);
@@ -38,11 +37,13 @@ public class DigitalClockFragment extends Fragment {
         return rootView;
     }
 
-    public void displayViews() {
+    private void displayTimeView(TextView timeView, String format) {
         timeView.setText(String.format(format, Model.getCurrentHour()) + ":"
                 + String.format(format, Model.getCurrentMinute()) + ":"
                 + String.format(format, Model.getCurrentSecond()));
+    }
 
+    private void displayDateView(TextView dateView, String format) {
         dateView.setText(String.format(format, Model.getCurrentMonth() + 1) + "/"
                 + String.format(format, Model.getCurrentDay())
                 + "/" + String.format(format, Model.getCurrentYear()));

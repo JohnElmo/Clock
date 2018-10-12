@@ -4,14 +4,14 @@ import java.util.Calendar;
 
 public class Model {
 
-    static int currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond;
-    static boolean changed = false;
+    private static int currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond;
+    private static boolean changed = false;
 
     public Model() {
         maintainCurrentTime();
     }
 
-    public void maintainCurrentTime() {
+    private void maintainCurrentTime() {
         Thread t1 = new Thread() {
             @Override
             public void run() {
@@ -40,7 +40,7 @@ public class Model {
         t1.start();
     }
 
-    public void getCalendarInfo(Calendar cal) {
+    private void getCalendarInfo(Calendar cal) {
         currentYear = cal.get(Calendar.YEAR);
         currentMonth = cal.get(Calendar.MONTH);
         currentDay = cal.get(Calendar.DAY_OF_MONTH);
@@ -49,7 +49,7 @@ public class Model {
         currentSecond = cal.get(Calendar.SECOND);
     }
 
-    public void setCalendarInfo(Calendar cal) {
+    private void setCalendarInfo(Calendar cal) {
         cal.set(Calendar.YEAR, currentYear);
         cal.set(Calendar.MONTH, currentMonth);
         cal.set(Calendar.DAY_OF_MONTH, currentDay);

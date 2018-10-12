@@ -12,15 +12,14 @@ import java.util.Calendar;
 
 public class AnalogClockFragment extends Fragment {
 
-    static MyVectorClock vectorAnalogClock;
-    TextView dateView;
-    String format = "%02d";
+    private static MyVectorClock vectorAnalogClock;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.analog_clock_fragment, container, false);
 
-        dateView = rootView.findViewById(R.id.dateTextView);
+        final TextView dateView = rootView.findViewById(R.id.dateTextView);
+        final String format = "%02d";
 
         vectorAnalogClock = rootView.findViewById(R.id.analogClock);
         Calendar cal = Calendar.getInstance();
@@ -37,7 +36,7 @@ public class AnalogClockFragment extends Fragment {
             @Override
             public void run() {
                 while(!interrupted()) {
-                    displayViews();
+                    displayDateView(dateView, format);
 
                     try {
                         Thread.sleep(1000);
@@ -53,17 +52,17 @@ public class AnalogClockFragment extends Fragment {
         return rootView;
     }
 
-    public void displayViews() {
+    private void displayDateView(TextView dateView, String format) {
         dateView.setText(String.format(format, Model.getCurrentMonth() + 1) + "/"
                 + String.format(format, Model.getCurrentDay())
                 + "/" + String.format(format, Model.getCurrentYear()));
     }
 
-    public static void setAnalogClock() {
+    public static void setAnalogClock(int hour, int minute, int second) {
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, Model.getCurrentHour());
-        cal.set(Calendar.MINUTE, Model.getCurrentMinute());
-        cal.set(Calendar.SECOND, Model.getCurrentSecond());
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        cal.set(Calendar.MINUTE, minute);
+        cal.set(Calendar.SECOND, second);
         vectorAnalogClock.setCalendar(cal);
     }
 }

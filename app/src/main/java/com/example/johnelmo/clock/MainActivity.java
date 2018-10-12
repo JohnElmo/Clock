@@ -1,33 +1,18 @@
 package com.example.johnelmo.clock;
 
-import android.app.DatePickerDialog;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import android.widget.TextView;
-
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    static SectionsPagerAdapter mSectionsPagerAdapter;
-    static ViewPager mViewPager;
-    static TabLayout tabLayout;
-    Toolbar toolbar;
+    private static SectionsPagerAdapter mSectionsPagerAdapter;
+    private static ViewPager mViewPager;
+    private static TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         Model m = new Model();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         mViewPager = (ViewPager) findViewById(R.id.container);

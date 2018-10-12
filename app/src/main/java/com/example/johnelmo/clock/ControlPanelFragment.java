@@ -12,21 +12,17 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
-import java.util.Calendar;
-
 public class ControlPanelFragment extends Fragment implements DatePickerDialog.OnDateSetListener,
         TimePickerDialog.OnTimeSetListener {
-
-    Button  digitalButton, analogButton, pickDate, pickTime;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.control_panel_fragment, container, false);
 
-        pickDate = rootView.findViewById(R.id.dateButton);
-        pickTime = rootView.findViewById(R.id.timeButton);
-        digitalButton = rootView.findViewById(R.id.digitalButton);
-        analogButton = rootView.findViewById(R.id.analogButton);
+        Button pickDate = rootView.findViewById(R.id.dateButton);
+        Button pickTime = rootView.findViewById(R.id.timeButton);
+        Button digitalButton = rootView.findViewById(R.id.digitalButton);
+        Button analogButton = rootView.findViewById(R.id.analogButton);
 
         pickDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,8 +71,9 @@ public class ControlPanelFragment extends Fragment implements DatePickerDialog.O
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         Model.setCurrentHour(hourOfDay);
         Model.setCurrentMinute(minute);
+        Model.setCurrentSecond(0);
         Model.setChanged(true);
-        AnalogClockFragment.setAnalogClock();
+        AnalogClockFragment.setAnalogClock(Model.getCurrentHour(), Model.getCurrentMinute(), Model.getCurrentSecond());
     }
 
 }
