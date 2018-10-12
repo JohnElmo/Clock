@@ -33,8 +33,4 @@ public class UndoRedoManager {
         }
     }
 
-    public boolean isUndoAvailable() {
-        return !undoStack.isEmpty();
-    }
-
 }
