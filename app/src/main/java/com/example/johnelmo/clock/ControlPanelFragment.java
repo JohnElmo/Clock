@@ -31,8 +31,8 @@ public class ControlPanelFragment extends Fragment implements DatePickerDialog.O
         pickDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
-                        ControlPanelFragment.this, Model.getCurrentYear(), Model.getCurrentMonth(), Model.getCurrentDay());
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), ControlPanelFragment.this,
+                        MainActivity.getModel().getCurrentYear(), MainActivity.getModel().getCurrentMonth(), MainActivity.getModel().getCurrentDay());
                 datePickerDialog.show();
             }
         });
@@ -40,8 +40,8 @@ public class ControlPanelFragment extends Fragment implements DatePickerDialog.O
         pickTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(),
-                        ControlPanelFragment.this, Model.getCurrentHour(), Model.getCurrentMinute(), DateFormat.is24HourFormat(getContext()));
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), ControlPanelFragment.this,
+                        MainActivity.getModel().getCurrentHour(), MainActivity.getModel().getCurrentMinute(), DateFormat.is24HourFormat(getContext()));
                 timePickerDialog.show();
             }
         });
@@ -81,16 +81,16 @@ public class ControlPanelFragment extends Fragment implements DatePickerDialog.O
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Model.setCurrentYear(year);
-        Model.setCurrentMonth(month);
-        Model.setCurrentDay(dayOfMonth);
-        Model.setChanged(true);
+        MainActivity.getModel().setCurrentYear(year);
+        MainActivity.getModel().setCurrentMonth(month);
+        MainActivity.getModel().setCurrentDay(dayOfMonth);
+        MainActivity.getModel().setChanged(true);
     }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        undoRedoManager.execute(new ChangeTimeCommand(Model.getCurrentHour(), Model.getCurrentMinute(),
-               Model.getCurrentSecond(), hourOfDay, minute, 0));
+        undoRedoManager.execute(new ChangeTimeCommand(MainActivity.getModel().getCurrentHour(), MainActivity.getModel().getCurrentMinute(),
+                MainActivity.getModel().getCurrentSecond(), hourOfDay, minute, 0));
     }
 
 }

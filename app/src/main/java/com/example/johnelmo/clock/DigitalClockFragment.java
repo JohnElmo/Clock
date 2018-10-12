@@ -38,14 +38,14 @@ public class DigitalClockFragment extends Fragment {
     }
 
     private void displayTimeView(TextView timeView, String format) {
-        timeView.setText(String.format(format, Model.getCurrentHour()) + ":"
-                + String.format(format, Model.getCurrentMinute()) + ":"
-                + String.format(format, Model.getCurrentSecond()));
+        timeView.setText(String.format(format, MainActivity.getModel().getCurrentHour()) + ":"
+                + String.format(format, MainActivity.getModel().getCurrentMinute()) + ":"
+                + String.format(format, MainActivity.getModel().getCurrentSecond()));
     }
 
     private void displayDateView(TextView dateView, String format) {
-        dateView.setText(String.format(format, Model.getCurrentMonth() + 1) + "/"
-                + String.format(format, Model.getCurrentDay())
-                + "/" + String.format(format, Model.getCurrentYear()));
+        dateView.setText(String.format(format, MainActivity.getModel().getCurrentMonth() + 1) + "/"
+                + String.format(format, MainActivity.getModel().getCurrentDay())
+                + "/" + String.format(format, MainActivity.getModel().getCurrentYear()));
     }
 }

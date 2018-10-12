@@ -14,10 +14,11 @@ public class ChangeTimeCommand implements Command {
 
     @Override
     public void execute() {
-        Model.setCurrentHour(newHour);
-        Model.setCurrentMinute(newMinute);
-        Model.setCurrentSecond(newSecond);
-        AnalogClockFragment.setAnalogClock(Model.getCurrentHour(), Model.getCurrentMinute(), Model.getCurrentSecond());
+        MainActivity.getModel().setCurrentHour(newHour);
+        MainActivity.getModel().setCurrentMinute(newMinute);
+        MainActivity.getModel().setCurrentSecond(newSecond);
+        AnalogClockFragment.setAnalogClock(MainActivity.getModel().getCurrentHour(),
+                MainActivity.getModel().getCurrentMinute(), MainActivity.getModel().getCurrentSecond());
     }
 
     @Override
@@ -27,10 +28,11 @@ public class ChangeTimeCommand implements Command {
 
     @Override
     public void undo() {
-        Model.setCurrentHour(oldHour);
-        Model.setCurrentMinute(oldMinute);
-        Model.setCurrentSecond(oldSecond);
-        AnalogClockFragment.setAnalogClock(Model.getCurrentHour(), Model.getCurrentMinute(), Model.getCurrentSecond());
+        MainActivity.getModel().setCurrentHour(oldHour);
+        MainActivity.getModel().setCurrentMinute(oldMinute);
+        MainActivity.getModel().setCurrentSecond(oldSecond);
+        AnalogClockFragment.setAnalogClock(MainActivity.getModel().getCurrentHour(),
+                MainActivity.getModel().getCurrentMinute(), MainActivity.getModel().getCurrentSecond());
     }
 
 }

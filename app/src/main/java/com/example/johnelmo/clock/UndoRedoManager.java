@@ -10,7 +10,7 @@ public class UndoRedoManager {
     public void execute(Command command) {
         command.execute();
         undoStack.push(command);
-        Model.setChanged(true); // Time has been changed, model is not using current time
+        MainActivity.getModel().setChanged(true); // Time has been changed, model is not using current time
     }
 
     public void redo() {
@@ -18,7 +18,7 @@ public class UndoRedoManager {
             Command command = redoStack.pop();
             command.redo();
             undoStack.push(command);
-            Model.setChanged(true); // Time has been changed, model is not using current time
+            MainActivity.getModel().setChanged(true); // Time has been changed, model is not using current time
         }
     }
 
@@ -27,7 +27,7 @@ public class UndoRedoManager {
             Command command = undoStack.pop();
             command.undo();
             if (undoStack.isEmpty()) {
-                Model.setChanged(false); // All changes have been undone so model needs to reset to current time
+                MainActivity.getModel().setChanged(false); // All changes have been undone so model needs to reset to current time
             }
             redoStack.push(command);
         }

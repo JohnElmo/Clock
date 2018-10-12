@@ -23,9 +23,9 @@ public class AnalogClockFragment extends Fragment {
 
         vectorAnalogClock = rootView.findViewById(R.id.analogClock);
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, Model.getCurrentHour());
-        cal.set(Calendar.MINUTE, Model.getCurrentMinute());
-        cal.set(Calendar.SECOND, Model.getCurrentSecond());
+        cal.set(Calendar.HOUR_OF_DAY, MainActivity.getModel().getCurrentHour());
+        cal.set(Calendar.MINUTE, MainActivity.getModel().getCurrentMinute());
+        cal.set(Calendar.SECOND, MainActivity.getModel().getCurrentSecond());
         vectorAnalogClock.setCalendar(cal);
         vectorAnalogClock.setDiameterInDp(200.0f);
         vectorAnalogClock.setOpacity(1.0f);
@@ -53,9 +53,9 @@ public class AnalogClockFragment extends Fragment {
     }
 
     private void displayDateView(TextView dateView, String format) {
-        dateView.setText(String.format(format, Model.getCurrentMonth() + 1) + "/"
-                + String.format(format, Model.getCurrentDay())
-                + "/" + String.format(format, Model.getCurrentYear()));
+        dateView.setText(String.format(format, MainActivity.getModel().getCurrentMonth() + 1) + "/"
+                + String.format(format, MainActivity.getModel().getCurrentDay())
+                + "/" + String.format(format, MainActivity.getModel().getCurrentYear()));
     }
 
     public static void setAnalogClock(int hour, int minute, int second) {

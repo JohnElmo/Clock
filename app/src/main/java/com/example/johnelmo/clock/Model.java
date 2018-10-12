@@ -4,8 +4,8 @@ import java.util.Calendar;
 
 public class Model {
 
-    private static int currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond;
-    private static boolean changed = false;
+    private int currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond;
+    private boolean changed = false;
 
     public Model() {
         maintainCurrentTime();
@@ -51,49 +51,49 @@ public class Model {
         cal.set(Calendar.SECOND, currentSecond);
     }
 
-    public static int getCurrentYear() {
+    public int getCurrentYear() {
         return currentYear;
     }
 
-    public static int getCurrentMonth() {
+    public int getCurrentMonth() {
         return currentMonth;
     }
 
-    public static int getCurrentDay() {
+    public int getCurrentDay() {
         return currentDay;
     }
 
-    public static int getCurrentHour() {
+    public int getCurrentHour() {
         return currentHour;
     }
 
-    public static int getCurrentMinute() {
+    public int getCurrentMinute() {
         return currentMinute;
     }
 
-    public static int getCurrentSecond() {
+    public int getCurrentSecond() {
         return currentSecond;
     }
 
-    public static void setCurrentYear(int year) {
+    public void setCurrentYear(int year) {
         currentYear = year;
     }
 
-    public static void setCurrentMonth(int month) { currentMonth = month; }
+    public void setCurrentMonth(int month) { currentMonth = month; }
 
-    public static void setCurrentDay(int day) {
+    public void setCurrentDay(int day) {
         currentDay = day;
     }
 
-    public static void setCurrentHour(int hour) {
+    public void setCurrentHour(int hour) {
         currentHour = hour;
     }
 
-    public static void setCurrentMinute(int minute) { currentMinute = minute; }
+    public void setCurrentMinute(int minute) { currentMinute = minute; }
 
-    public static void setCurrentSecond(int second) { currentSecond = second; }
+    public void setCurrentSecond(int second) { currentSecond = second; }
 
-    public static void setChanged(boolean status) {
+    public void setChanged(boolean status) {
         changed = status;
     }
 

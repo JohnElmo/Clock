@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static Model model;
     private static SectionsPagerAdapter mSectionsPagerAdapter;
     private static ViewPager mViewPager;
     private static TabLayout tabLayout;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Model m = new Model();
+        model = new Model();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static SectionsPagerAdapter getSectionsPagerAdapter() {
         return mSectionsPagerAdapter;
+    }
+
+    public static Model getModel() {
+        return model;
     }
 
 }
