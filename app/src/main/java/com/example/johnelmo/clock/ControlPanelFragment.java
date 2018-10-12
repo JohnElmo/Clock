@@ -15,6 +15,8 @@ import android.widget.TimePicker;
 public class ControlPanelFragment extends Fragment implements DatePickerDialog.OnDateSetListener,
         TimePickerDialog.OnTimeSetListener {
 
+    private UndoRedoManager undoRedoManager = new UndoRedoManager();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.control_panel_fragment, container, false);
@@ -63,14 +65,14 @@ public class ControlPanelFragment extends Fragment implements DatePickerDialog.O
         redoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                undoRedoManager.redo();
             }
         });
 
         undoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                undoRedoManager.undo();
             }
         });
 
@@ -87,11 +89,8 @@ public class ControlPanelFragment extends Fragment implements DatePickerDialog.O
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        Model.setCurrentHour(hourOfDay);
-        Model.setCurrentMinute(minute);
-        Model.setCurrentSecond(0);
-        Model.setChanged(true);
-        AnalogClockFragment.setAnalogClock(Model.getCurrentHour(), Model.getCurrentMinute(), Model.getCurrentSecond());
+        undoRedoManager.execute(new ChangeTimeCommand(Model.getCurrentHour(), Model.getCurrentMinute(),
+               Model.getCurrentSecond(), hourOfDay, minute, 0));
     }
 
 }
