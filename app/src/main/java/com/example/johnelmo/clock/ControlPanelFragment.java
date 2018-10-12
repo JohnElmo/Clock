@@ -23,6 +23,8 @@ public class ControlPanelFragment extends Fragment implements DatePickerDialog.O
         Button pickTime = rootView.findViewById(R.id.timeButton);
         Button digitalButton = rootView.findViewById(R.id.digitalButton);
         Button analogButton = rootView.findViewById(R.id.analogButton);
+        Button redoButton = rootView.findViewById(R.id.redoButton);
+        Button undoButton = rootView.findViewById(R.id.undoButton);
 
         pickDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +57,20 @@ public class ControlPanelFragment extends Fragment implements DatePickerDialog.O
             public void onClick(View v) {
                 MainActivity.getSectionsPagerAdapter().addFragment(new AnalogClockFragment(), "Analog Clock");
                 MainActivity.updatePageAdapter();
+            }
+        });
+
+        redoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
